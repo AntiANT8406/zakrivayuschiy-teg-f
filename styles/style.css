@@ -1,20 +1,404 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ theme-dark — класс тёмной темы
-✦ theme-light — класс светлой темы
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
-
-*/
-
 .page {
+  font-family: var(--main-font), sans-serif;
+  font-weight: var(--main-font-weight, 400);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px 0;
+  color: var(--main-color);
+  background-color: var(--main-bg-color, #fff);
+  background-image: var(--bg-image);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+}
+
+.base {
+  border: var(--main-color) solid 2px;
+  background-color: var(--main-bg-color, #fff);
+  max-inline-size: 700px;
+  inline-size: clamp(23.438rem, 16.285rem + 30.52vw, 43.75rem);
+}
+
+.button-font {
+  font-family: var(--accent-font), sans-serif;
+  font-size: 14px;
+  font-weight: var(--main-font-weight, 400);
+}
+
+.text-button {
+  line-height: 0.9;
+  min-block-size: 38px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+  background-color: transparent;
+  border: currentColor solid 2px;
+}
+
+.text-button::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  transition: 0.5s;
+  transition-timing-function: ease-in-out;
+  transform: translateX(-100%);
+  background-color: var(--main-color);
+  inset: 0 0;
+}
+
+.text-button:hover:after {
+  transform: translateX(0);
+}
+
+.text-button:focus-visible {
+  box-shadow: 2px 2px 0 var(--main-color, #fff);
+}
+
+.text-button > span {
+  position: relative;
+  z-index: 1;
+  color: var(--button-color, #fff);
+  mix-blend-mode: difference;
+}
+
+.text-button > svg {
+  position: relative;
+  z-index: 1;
+  color: var(--button-color);
+  mix-blend-mode: difference;
+}
+
+.header {
+  font-family: var(--accent-font), sans-serif;
+  font-weight: var(--accent-font-weight, 400);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: clamp(20.438rem, 19.705rem + 3.661vw, 23rem);
+  margin-block-end: 100px;
+}
+
+.header__logo {
+  font-size: clamp(3.063rem, 2.71rem + 1.502vw, 4.063rem);
+  text-decoration: none;
+  margin-block-end: 20px;
+}
+
+.header__title {
+  font-size: clamp(0.875rem, 0.677rem + 0.845vw, 1.438rem);
+  text-transform: uppercase;
+  margin-block-end: 25px;
+}
+
+.header__theme-menu {
+  margin-block-end: 25px;
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.theme-menu__button {
+  font-size: 14px;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  transition-timing-function: ease;
+  text-transform: uppercase;
+  border: none;
+  background-color: transparent;
+}
+
+.theme-menu__button:disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.theme-menu__button:disabled::before {
+  position: absolute;
+  content: "▶";
+  animation: pointing 0.5s ease-in-out infinite alternate;
+  opacity: 0.6;
+  margin-inline-start: -1.5em;
+  margin-inline-end: -0.5em;
+}
+
+.theme-menu__button::after {
+  position: absolute;
+  display: block;
+  content: "";
+  transition: transform 0.3s, opacity 0.3s;
+  transform: scaleX(0);
+  background-color: var(--main-color);
+  inline-size: 95%;
+  inset-inline-start: 5px;
+  block-size: 2px;
+  inset-block-end: -3px;
+}
+
+.theme-menu__button:hover {
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus-visible {
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus-visible::after {
+  transform: scaleX(1);
+  opacity: 0.6;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.card__title {
+  font-size: 18px;
+  font-weight: var(--accent-font-weight, 400);
+  padding: 5px 10px;
+}
+
+.card__image-container {
+  position: relative;
+  inline-size: 100%;
+  border-block-start: var(--main-color) solid 2px;
+  border-block-end: var(--main-color) solid 2px;
+
+}
+
+.card__image {
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.grayscale {
+  filter: grayscale(0.8);
+}
+
+.saturate {
+  filter: saturate(4);
+}
+
+.hue {
+  filter: hue-rotate(40deg);
+}
+
+.invert {
+  filter: invert(1) contrast(0.5);
+}
+
+.sepia {
+  filter: sepia(0.9) brightness(0.9);
+}
+
+.blur {
+  filter: blur(20px);
+}
+
+.mixed {
+  filter: hue-rotate(90deg) blur(2px) contrast(0.5);
+}
+
+.card__watermark {
+  font-family: var(--accent-font), sans-serif;
+  font-size: 14px;
+  font-weight: var(--main-font-weight, 400);
+  position: absolute;
+  opacity: 0.5;
+  color: var(--main-color);
+  text-shadow: -1px 0 1px var(--main-bg-color, #fff),
+  1px 0 1px var(--main-bg-color, #fff),
+  0 -1px 1px var(--main-bg-color, #fff),
+  0 1px 1px var(--main-bg-color, #fff);
+  mix-blend-mode: hard-light;
+  inset-inline-end: 25px;
+  inset-block-start: 25px;
+  inline-size: fit-content;
+}
+
+@supports ((text-stroke: 1px var(--main-bg-color, #fff)) or (-webkit-text-stroke: 1px var(--main-bg-color, #fff))) {
+  .card__watermark {
+    -webkit-text-stroke: 1px var(--main-bg-color, #fff);
+    text-stroke: 1px var(--main-bg-color, #fff);
+    text-shadow: none;
+  }
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  gap: 25px;
+}
+
+.card__icon-button:focus-visible {
+  outline: var(--main-color, #fff) solid 2px;
+}
+
+.post__text {
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.card__buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+
+.card__icon-button {
+  padding: 0;
+  border: none;
+  background-color: inherit;
+  inline-size: 36px;
+}
+
+.card__like-button {
+  width: fit-content;
+  padding: 0;
+  min-inline-size: 130px;
+  min-block-size: 38px;
+}
+
+.like-icon .core {
+  transition: fill 0.3s 0.03s;
+  fill: var(--main-bg-color);
+}
+
+.like-icon:hover .core {
+  transition: fill 0.3s;
+  fill: var(--fill);
+}
+
+.like-icon:active .core {
+  transition: fill 0.3s;
+  fill: var(--fill-liked);
+}
+
+.like-icon.is-liked .core {
+  transition: fill 0.3s;
+  fill: var(--fill-liked);
+}
+
+.like-icon .main-body {
+  transition: fill 0.3s;
+  fill: var(--main-bg-color);
+}
+
+.like-icon:hover .main-body {
+  transition: fill 0.3s 0.05s;
+  fill: var(--fill, #000);
+}
+
+.like-icon:active .main-body {
+  transition: fill 0.3s 0.05s;
+  fill: var(--fill-liked, #f00);
+}
+
+.like-icon.is-liked .main-body {
+  transition: fill 0.3s 0.05s;
+  fill: var(--fill-liked, #f00);
+}
+
+.like-icon .contour {
+  transition: fill 0.1s;
+  fill: var(--fill, #000);
+}
+
+.like-icon.is-liked .contour {
+  transition: fill 0.3s 0.06s;
+  fill: var(--fill-liked, #f00);
+}
+
+.like-icon.is-liked .heart {
+  transform-origin: center;
+  animation-name: heart;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+  animation-delay: 0.1s;
+  animation-iteration-count: 1;
+  animation-direction: reverse;
+}
+
+.sparks {
+  opacity: 0;
+  fill: var(--fill-liked, #f00);
+}
+
+.like-icon.is-liked .sparks {
+  animation-name: sparks;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+  animation-delay: 0.3s;
+  animation-iteration-count: 1;
+  animation-direction: reverse;
+}
+
+
+.save-button {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 15px 20px;
+  color: var(--main-color, #000);
+  border: var(--main-color, #000) solid 2px;
+  background-color: var(--main-bg-color, #fff);
+  margin-block-start: 50px;
+  gap: 8px;
+  inline-size: clamp(19.125rem, 18.047rem + 4.6vw, 22.188rem);
+  min-inline-size: 306px;
+  min-block-size: 55px;
+}
+
+.save-button__icon {
+  align-self: center;
+  justify-self: center;
+}
+
+.save-button__text {
+  text-wrap: nowrap;
+}
+
+.insert-floppy {
+  padding: 30px;
+  color: var(--main-color, #000);
+  inline-size: clamp(341px, 80%, 357px);
+}
+
+.insert-floppy__container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+
+.insert-floppy__info {
+  line-height: 1.5;
+  display: flex;
+  gap: 20px;
+}
+
+.insert-floppy__button {
+  width: 100%;
+}
+
+.insert-floppy::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
 }
