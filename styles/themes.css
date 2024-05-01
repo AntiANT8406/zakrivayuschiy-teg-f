@@ -37,8 +37,8 @@
   --fill: #00cc14;
 }
 
-
 @media (prefers-color-scheme: dark) {
+
   :root.theme-auto {
     color-scheme: dark;
     --main-bg-color: #000;

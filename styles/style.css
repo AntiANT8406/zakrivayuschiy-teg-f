@@ -174,7 +174,6 @@
   inline-size: 100%;
   border-block-start: var(--main-color) solid 2px;
   border-block-end: var(--main-color) solid 2px;
-
 }
 
 .card__image {
@@ -221,16 +220,19 @@
   opacity: 0.5;
   color: var(--main-color);
   text-shadow: -1px 0 1px var(--main-bg-color, #fff),
-  1px 0 1px var(--main-bg-color, #fff),
-  0 -1px 1px var(--main-bg-color, #fff),
-  0 1px 1px var(--main-bg-color, #fff);
+    1px 0 1px var(--main-bg-color, #fff), 0 -1px 1px var(--main-bg-color, #fff),
+    0 1px 1px var(--main-bg-color, #fff);
   mix-blend-mode: hard-light;
   inset-inline-end: clamp(13px, calc(13px + ((100vw - 375px) / 88.75)), 25px);
   inset-block-start: 20px;
   inline-size: fit-content;
 }
 
-@supports ((text-stroke: 1px var(--main-bg-color, #fff)) or (-webkit-text-stroke: 1px var(--main-bg-color, #fff))) {
+@supports (
+  (text-stroke: 1px var(--main-bg-color, #fff)) or
+    (-webkit-text-stroke: 1px var(--main-bg-color, #fff))
+) {
+
   .card__watermark {
     -webkit-text-stroke: 1px var(--main-bg-color, #fff);
     text-stroke: 1px var(--main-bg-color, #fff);
@@ -261,7 +263,6 @@
   justify-content: flex-end;
   gap: 8px;
 }
-
 
 .card__icon-button {
   display: flex;
@@ -355,7 +356,6 @@
   animation-direction: reverse;
 }
 
-
 .save-button {
   display: flex;
   align-items: center;
@@ -382,17 +382,15 @@
   text-wrap: nowrap;
 }
 
-.insert-floppy {
+.insert-floppy[open]{
   padding: 30px clamp(30px, calc(40px - ((100vw - 375px) / 106.5)), 40px);
   color: var(--main-color, #000);
   inline-size: clamp(341px, calc(341px + ((100vw - 375px) / 66.56)), 357px);
-}
-
-.insert-floppy__container {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
+
 
 .insert-floppy__icon {
   align-self: center;
