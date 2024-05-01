@@ -19,7 +19,6 @@
   --button-color: #fff;
 
   --fill: #000;
-  --fill-liked: #f00;
 }
 
 :root.theme-dark {
@@ -36,7 +35,6 @@
   --button-color: #00cc14;
 
   --fill: #00cc14;
-  --fill-liked: #00cc14;
 }
 
 
@@ -55,6 +53,5 @@
     --button-color: #00cc14;
 
     --fill: #00cc14;
-    --fill-liked: #00cc14;
   }
 }

@@ -1,6 +1,5 @@
 .page {
   font-family: var(--main-font), sans-serif;
-  font-weight: var(--main-font-weight, 400);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -11,6 +10,7 @@
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
+  font-variation-settings: "wght" var(--main-font-weight, 400);
   min-inline-size: 320px;
   min-block-size: 100dvb;
 }
@@ -23,19 +23,19 @@
 }
 
 .button-font {
-  font-family: var(--accent-font), sans-serif;
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   font-weight: var(--main-font-weight, 400);
 }
 
 .text-button {
   line-height: 0.9;
-  min-block-size: 38px;
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.3s;
-  background-color: transparent;
   border: currentColor solid 2px;
+  background-color: transparent;
+  min-block-size: 38px;
 }
 
 .text-button::after {
@@ -73,7 +73,7 @@
 }
 
 .header {
-  font-family: var(--accent-font), sans-serif;
+  font-family: var(--accent-font), fantasy;
   font-weight: var(--accent-font-weight, 400);
   display: flex;
   align-items: center;
@@ -102,7 +102,8 @@
 .theme-menu__list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 11px;
+  padding-inline-start: 20px;
 }
 
 .theme-menu__button {
@@ -164,8 +165,8 @@
 
 .card__title {
   font-size: 18px;
-  font-weight: var(--accent-font-weight, 400);
   padding: 5px 10px;
+  font-variation-settings: "wght" var(--accent-font-weight, 700);
 }
 
 .card__image-container {
@@ -213,7 +214,7 @@
 }
 
 .card__watermark {
-  font-family: var(--accent-font), sans-serif;
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   font-weight: var(--main-font-weight, 400);
   position: absolute;
@@ -224,8 +225,8 @@
   0 -1px 1px var(--main-bg-color, #fff),
   0 1px 1px var(--main-bg-color, #fff);
   mix-blend-mode: hard-light;
-  inset-inline-end: 25px;
-  inset-block-start: 25px;
+  inset-inline-end: clamp(13px, calc(13px + ((100vw - 375px) / 88.75)), 25px);
+  inset-block-start: 20px;
   inline-size: fit-content;
 }
 
@@ -258,12 +259,16 @@
 .card__buttons-container {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 8px;
 }
 
 
 .card__icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
+
   border: none;
   background-color: inherit;
   inline-size: 36px;
@@ -362,14 +367,15 @@
   background-color: var(--main-bg-color, #fff);
   margin-block-start: 50px;
   gap: 8px;
-  inline-size: clamp(19.125rem, 18.047rem + 4.6vw, 22.188rem);
-  min-inline-size: 306px;
+  inline-size: clamp(310px, calc(310px + ((100vw - 375px) / 35.5)), 340px);
   min-block-size: 55px;
 }
 
 .save-button__icon {
   align-self: center;
   justify-self: center;
+  inline-size: clamp(22px, calc(29px - ((100vw - 375px) / 152.14)), 29px);
+  block-size: clamp(22px, calc(29px - ((100vw - 375px) / 152.14)), 29px);
 }
 
 .save-button__text {
@@ -377,9 +383,9 @@
 }
 
 .insert-floppy {
-  padding: 30px;
+  padding: 30px clamp(30px, calc(40px - ((100vw - 375px) / 106.5)), 40px);
   color: var(--main-color, #000);
-  inline-size: clamp(341px, 80%, 357px);
+  inline-size: clamp(341px, calc(341px + ((100vw - 375px) / 66.56)), 357px);
 }
 
 .insert-floppy__container {
@@ -388,11 +394,18 @@
   gap: 30px;
 }
 
+.insert-floppy__icon {
+  align-self: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+}
 
 .insert-floppy__info {
   line-height: 1.5;
   display: flex;
   gap: 20px;
+  text-transform: uppercase;
 }
 
 .insert-floppy__button {

@@ -19,7 +19,7 @@
   <body class="page">
     <header class="header base">
       <div class="header__logo">
-        &lt/HTML&gt
+        &lt;/HTML&gt;
       </div>
       <h1 class="header__title">закрывающий тег</h1>
       <nav class="theme-menu header__theme-menu">
@@ -474,7 +474,7 @@
       onclick="window['insert-floppy'].showModal();"
       aria-controls="insert-floppy"
     >
-      <svg width="21" height="21" class="save-button__icon">
+      <svg class="save-button__icon">
         <use href="./svg/floppy.svg#floppy"/>
       </svg>
       <span class="save-button__text">Сохранить на память</span>
@@ -482,13 +482,13 @@
     <dialog id="insert-floppy" class="insert-floppy" aria-label="Вставьте дискету">
       <div class="insert-floppy__container">
         <div class="insert-floppy__info">
-          <svg class="insert-floppy__icon" width="40" height="40">
+          <svg class="insert-floppy__icon">
             <use href="./svg/floppy.svg#floppy"></use>
           </svg>
-          <p class="insert-floppy__text button-font">Вставьте дискету, чтобы продолжить</p>
+          <p class="insert-floppy__text button-font">Вставьте дискету,&nbsp;чтобы продолжить</p>
         </div>
         <form method="dialog">
-          <button class="insert-floppy__button text-button">
+          <button class="insert-floppy__button text-button" type="submit">
             <span class="button-font">ОК</span>
           </button>
         </form>

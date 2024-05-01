@@ -18,7 +18,7 @@
       transparent 2px 4px
     ),
     repeating-linear-gradient(
-      to bottom, #d3d3d3 0 2px,
+      to bottom, var(--bg-lines-color, #d3d3d3) 0 2px,
       transparent 2px 4px
     ),
     linear-gradient(
@@ -31,4 +31,5 @@
 
   --fill: #000;
   --fill-liked: #f00;
+
 }
