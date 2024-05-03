@@ -247,12 +247,9 @@
   gap: 25px;
 }
 
-.card__icon-button:focus-visible {
-  outline: var(--main-color, #fff) solid 2px;
-}
-
 .post__text {
   font-size: 18px;
+  line-height:1.166;
   display: flex;
   flex-direction: column;
   gap: 27px;
@@ -269,10 +266,15 @@
   align-items: center;
   justify-content: center;
   padding: 0;
-
   border: none;
   background-color: inherit;
   inline-size: 36px;
+  outline: transparent solid 2px;
+  transition: outline-color 0.3s;
+}
+
+.card__icon-button:focus-visible {
+  outline: var(--main-color, #fff) solid 2px;
 }
 
 .card__like-button {
@@ -382,7 +384,7 @@
   text-wrap: nowrap;
 }
 
-.insert-floppy[open]{
+.insert-floppy[open] {
   padding: 30px clamp(30px, calc(40px - ((100vw - 375px) / 106.5)), 40px);
   color: var(--main-color, #000);
   inline-size: clamp(341px, calc(341px + ((100vw - 375px) / 66.56)), 357px);
@@ -390,7 +392,6 @@
   flex-direction: column;
   gap: 30px;
 }
-
 
 .insert-floppy__icon {
   align-self: center;
